@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clima Simples</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 2rem; }
+    .container { max-width: 600px; margin: 0 auto; }
+    form { display: flex; gap: .5rem; margin-bottom: 1rem; }
+    input[type="text"] { flex: 1; padding: .6rem .8rem; }
+    button { padding: .6rem 1rem; cursor: pointer; }
+    .result { padding: 1rem; border: 1px solid #8884; border-radius: .5rem; min-height: 3rem; }
+    .error { color: #b00020; }
+    footer { margin-top: 2rem; font-size: .9rem; opacity: .8; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Clima Simples</h1>
+    <form id="weather-form">
+      <input id="city-input" type="text" placeholder="Digite o nome da cidade (ex.: São Paulo)" required />
+      <button type="submit">Buscar</button>
+    </form>
+
+    <div id="status" aria-live="polite"></div>
+    <div id="result" class="result"></div>
+
+    <footer>
+      Dados de: <a href="https://open-meteo.com/" target="_blank" rel="noreferrer noopener">Open-Meteo</a>
+    </footer>
+  </div>
+
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>
