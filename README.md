@@ -50,7 +50,7 @@ projeto-clima/
    git clone https://github.com/sgeo21/Projeto-tempo-IA
    cd Projeto-tempo-IA
    ```
-Abra no VS Code
+   Abra no VS Code
 
 Inicie um servidor local
 (para que os fetch() funcionem corretamente)
@@ -65,18 +65,25 @@ Digite o nome de uma cidade (ex: Limeira, Cordeirópolis, Piracicaba)
 
 Clique em “Buscar clima”
 
-Caso a API falhe, o app automaticamente usará os dados locais de teste.```
+Caso a API falhe, o app automaticamente usará os dados locais de teste.
 
 ---
 
 ## 🧪 **Casos de Teste**
 Nº	Cenário	Entrada	Resultado Esperado
+
 1	Cidade válida	Limeira	Exibe temperatura e vento
+
 2	Cidade inexistente	Atlantis	Exibe “Cidade não encontrada.”
+
 3	Campo vazio	""	Exibe “Digite o nome de uma cidade.”
+
 4	Entrada com caracteres inválidos	<script>	Entrada sanitizada, sem execução
+
 5	Falha na API	—	App usa sample-response.json
+
 6	Modo de teste local ativo	Piracicaba	Exibe dados do JSON local
+
 7	Latência alta	São Paulo	Mostra indicador de carregamento
 
 ---
