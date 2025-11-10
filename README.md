@@ -21,23 +21,25 @@ O intuito desta aplicação é o seu desenvolvimento com o auxílio de IA - fora
 
 ## 🧩 **Arquitetura do Projeto**
 
+```plaintext
 projeto-clima/
 │
-├── index.html # Estrutura principal do app
+├── index.html              # Estrutura principal do app
 ├── assets/
-│ ├── css/
-│ │ └── style.css # Estilos e layout
-│ ├── js/
-│ │ ├── main.js # Lógica principal e eventos
-│ │ ├── api.js # Conexão com API e fallback local
-│ │ ├── ui.js # Manipulação da interface (renderização e mensagens)
-│ │ └── utils.js # Validação e sanitização de entradas
-│ └── img/ # Ícones e imagens do app
+│   ├── css/
+│   │   └── style.css       # Estilos e layout
+│   ├── js/
+│   │   ├── main.js         # Lógica principal e eventos
+│   │   ├── api.js          # Conexão com API e fallback local
+│   │   ├── ui.js           # Manipulação da interface (renderização e mensagens)
+│   │   └── utils.js        # Validação e sanitização de entradas
+│   └── img/                # Ícones e imagens do app
 │
 ├── data/
-│ └── sample-response.json # Dados de exemplo para testes offline
+│   └── sample-response.json # Dados de exemplo para testes offline
 │
-└── README.md # Documentação do projeto
+└── README.md               # Documentação do projeto
+```
 
 ---
 
@@ -45,8 +47,9 @@ projeto-clima/
 
 1. **Clone o repositório**
    ```bash
-   git clone https://github.com/sgeo21/app-clima.git
-   cd app-clima
+   git clone https://github.com/sgeo21/Projeto-tempo-IA
+   cd Projeto-tempo-IA
+   ```
 Abra no VS Code
 
 Inicie um servidor local
@@ -62,9 +65,11 @@ Digite o nome de uma cidade (ex: Limeira, Cordeirópolis, Piracicaba)
 
 Clique em “Buscar clima”
 
-Caso a API falhe, o app automaticamente usará os dados locais de teste.
+Caso a API falhe, o app automaticamente usará os dados locais de teste.```
 
-🧪 Casos de Teste
+---
+
+## 🧪 **Casos de Teste**
 Nº	Cenário	Entrada	Resultado Esperado
 1	Cidade válida	Limeira	Exibe temperatura e vento
 2	Cidade inexistente	Atlantis	Exibe “Cidade não encontrada.”
