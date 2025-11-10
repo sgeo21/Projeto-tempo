@@ -1,0 +1,100 @@
+{
+  "samples": [
+    {
+      "city": "São Paulo, BR",
+      "latitude": -23.5505,
+      "longitude": -46.6333,
+      "current_weather": {
+        "temperature": 26.3,
+        "windspeed": 14.5,
+        "winddirection": 110,
+        "weathercode": 2,
+        "time": "2025-11-10T14:00"
+      }
+    },
+    {
+      "city": "Rio de Janeiro, BR",
+      "latitude": -22.9068,
+      "longitude": -43.1729,
+      "current_weather": {
+        "temperature": 29.1,
+        "windspeed": 10.2,
+        "winddirection": 90,
+        "weathercode": 1,
+        "time": "2025-11-10T14:00"
+      }
+    },
+    {
+      "city": "Curitiba, BR",
+      "latitude": -25.4284,
+      "longitude": -49.2733,
+      "current_weather": {
+        "temperature": 19.8,
+        "windspeed": 8.3,
+        "winddirection": 200,
+        "weathercode": 3,
+        "time": "2025-11-10T14:00"
+      }
+    },
+    {
+      "city": "Recife, BR",
+      "latitude": -8.0476,
+      "longitude": -34.877,
+      "current_weather": {
+        "temperature": 30.5,
+        "windspeed": 15.7,
+        "winddirection": 60,
+        "weathercode": 0,
+        "time": "2025-11-10T14:00"
+      }
+    },
+    {
+      "city": "Porto Alegre, BR",
+      "latitude": -30.0346,
+      "longitude": -51.2177,
+      "current_weather": {
+        "temperature": 22.0,
+        "windspeed": 12.1,
+        "winddirection": 160,
+        "weathercode": 61,
+        "time": "2025-11-10T14:00"
+      }
+    },
+    {
+      "city": "Limeira, BR",
+      "latitude": -22.5660,
+      "longitude": -47.4009,
+      "current_weather": {
+        "temperature": 27.8,
+        "windspeed": 11.3,
+        "winddirection": 135,
+        "weathercode": 2,
+        "time": "2025-11-10T14:00"
+      }
+    },
+    {
+      "city": "Cordeirópolis, BR",
+      "latitude": -22.4819,
+      "longitude": -47.4566,
+      "current_weather": {
+        "temperature": 28.4,
+        "windspeed": 9.8,
+        "winddirection": 145,
+        "weathercode": 1,
+        "time": "2025-11-10T14:00"
+      }
+    },
+    {
+      "city": "Piracicaba, BR",
+      "latitude": -22.7333,
+      "longitude": -47.6492,
+      "current_weather": {
+        "temperature": 29.6,
+        "windspeed": 13.4,
+        "winddirection": 120,
+        "weathercode": 3,
+        "time": "2025-11-10T14:00"
+      }
+    }
+  ]
+}
