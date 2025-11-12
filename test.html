@@ -1,48 +1,35 @@
-<!-- index.html
-  ===========
-
-  Página principal do aplicativo de previsão do tempo.
-  Estrutura básica do layout, links para os arquivos CSS e JavaScript,
-  e componentes principais de interação com o usuário.
-
-  Autor: Geovana Cazali
-  Projeto: App do Clima
-  Bootcamp: Generation Brasil
--->
+<!-- Arquivo principal, contém o layout e os links para CSS e JS. -->
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>App do Clima</title>
-    <!-- Estilos principais -->
+  <title>Testes do App de Clima</title>
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
   <main class="container">
-    <!-- Título principal da aplicação -->
     <h1>Previsão do Tempo</h1>
+    
 
-    <!-- Formulário de busca de cidade -->
     <form id="weather-form">
       <input type="text" id="city-input" placeholder="Digite o nome da cidade" required>
       <button type="submit">Buscar</button>
     </form>
 
-    <!-- Seção de resultados da previsão -->
     <section id="weather-result" class="hidden">
+      <p>🧪 Executando testes do App de Clima</p>
       <h2 id="city-name"></h2>
       <p id="temperature"></p>
       <p id="description"></p>
     </section>
 
-    <!-- Mensagens de erro exibidas ao usuário -->
     <p id="error-message" class="error"></p>
   </main>
 
-  <script type="module" src="./assets/js/main.js"></script>
-   <!-- Rodapé com informações da autora -->
+  <script type="module" src="./assets/js/test.js"></script>
+  <!-- Rodapé / Autor -->
   <footer class="author">
     <h3>🧑‍💻 Autora</h3>
     <p><strong>Geovana Cazali</strong></p>
@@ -56,3 +43,10 @@
   </footer>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Testes do App de Clima</title>
+  <script type="module">
+   

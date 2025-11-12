@@ -1,55 +1,65 @@
-/* Estilos básicos, amigáveis e responsivos. */
+/* 
+  style.css
+  ==========
+  Define os estilos principais da aplicação de previsão do tempo.
+  O layout é simples, centralizado e responsivo, com foco em legibilidade e leveza visual.
 
+  Autor: Geovana Cazali
+  Projeto: App do Clima
+  Bootcamp: Generation Brasil
+*/
+
+/* === Estilo base da página === */
 body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #70e1f5, #ffd194);
-  min-height: 100vh;
-  display: flex;
+  font-family: Arial, sans-serif;   /* Fonte simples e de fácil leitura */
+  background: linear-gradient(135deg, #70f5df, #f8b256e5);  /* Gradiente suave para efeito visual agradável */
+  min-height: 100vh;    /* Ocupa toda a altura da tela */
+  display: flex;        /* Centraliza conteúdo na tela */
   align-items: center;
-  justify-content: center;
-  margin: 0;
+  justify-content: center;    
+  margin: 0;      /* Remove espaçamento padrão */
 }
-
+/* === Container principal === */
 .container {
   background: white;
   padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  border-radius: 1rem;    /* Bordas arredondadas suaves */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);    /* Sombra leve para destaque */
   width: 90%;
-  max-width: 400px;
+  max-width: 400px;   /* Largura máxima para boa leitura */
   text-align: center;
 }
-
+/* === Campos de entrada === */
 input {
   padding: 0.5rem;
   width: 70%;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
 }
-
+/* === Botão principal === */
 button {
   padding: 0.5rem 1rem;
   border: none;
-  background-color: #007bff;
+  background-color: #001aff;
   color: white;
   border-radius: 0.5rem;
   cursor: pointer;
 }
-
+/* Efeito hover no botão */
 button:hover {
-  background-color: #0056b3;
+  background-color: #001aff;
 }
-
+/* === Classes utilitárias === */
 .hidden {
-  display: none;
+  display: none;                /* Oculta elementos dinamicamente */
 }
 
 .error {
   color: red;
-  margin-top: 1rem;
+  margin-top: 1rem;            /* Exibe mensagens de erro em destaque */
 }
 
-
+/* === Rodapé === */
 footer.author {
   margin-top: 2rem;
   padding: 1rem;
@@ -60,7 +70,7 @@ footer.author {
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 0 0 1rem 1rem;
 }
-
+/* Links do rodapé */
 footer.author a {
   color: #007bff;
   text-decoration: none;
@@ -70,6 +80,8 @@ footer.author a {
 footer.author a:hover {
   text-decoration: underline;
 }
+
+/* Posição fixa do rodapé no fim da tela */
 footer.author {
   position: fixed;
   bottom: 0;
