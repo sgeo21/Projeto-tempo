@@ -88,3 +88,8 @@ footer.author {
   left: 0;
   width: 100%;
 }
+/* icone de exibição da temperatura */
+.weather-icon {
+  font-size: 3rem;
+  margin: 0.5rem 0;
+}

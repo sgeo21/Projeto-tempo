@@ -1,75 +1,53 @@
 /**
- * Obtém dados meteorológicos atuais de uma cidade usando a API Open-Meteo.
- * 
- * A função tenta primeiro buscar dados em tempo real por meio das APIs:
- *  - Geocoding API: para obter latitude e longitude da cidade.
- *  - Forecast API: para buscar a temperatura e o vento atuais.
- * 
- * Caso a API falhe ou a cidade não seja encontrada, é feito um fallback
- * para um arquivo local (`./data/sample-response.json`).
+ * Busca dados meteorológicos de uma cidade usando a API Open-Meteo.
+ * Inclui ícones e descrições de clima com fallback para dados locais.
  *
  * @async
  * @function getWeatherData
  * @param {string} city - Nome da cidade a ser pesquisada.
- * @returns {Promise<Object>} Retorna um objeto contendo os dados do clima:
- * @returns {string} return.city - Nome completo da cidade e país.
- * @returns {number} return.temperature - Temperatura atual em °C.
- * @returns {string} return.description - Descrição com a velocidade do vento.
- * 
- * @throws {Error} Lança um erro se não for possível obter os dados da cidade,
- *                 tanto pela API quanto pelo arquivo local.
- * 
+ * @returns {Promise<Object>} Objeto com cidade, temperatura, descrição e ícone.
+ *
  * @example
- * // Exemplo de uso:
- * import { getWeatherData } from './api.js';
- * 
- * getWeatherData('São Paulo')
- *   .then(data => console.log(data))
- *   .catch(err => console.error(err.message));
- * 
- * // Retorno esperado:
- * // {
- * //   city: "São Paulo, Brazil",
- * //   temperature: 26.4,
- * //   description: "Vento: 12 km/h"
- * // }
+ * const data = await getWeatherData("Cordeirópolis");
+ * console.log(data.icone); // "☀️"
  */
-//Para que a aplicação nunca caia, sempre apresente um resultado mesmo que esse resultado seja o teste. 
 export async function getWeatherData(city) {
   try {
-    // Tenta buscar da API real
+    if (!city) throw new Error("O nome da cidade é obrigatório.");
+
+    // 🔹 Etapa 1: Buscar coordenadas
     const geoResponse = await fetch(
       `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`
     );
-
     if (!geoResponse.ok) throw new Error("Falha ao buscar localização.");
-
     const geoData = await geoResponse.json();
 
-    if (!geoData.results || geoData.results.length === 0)
-      throw new Error("Cidade não encontrada.");
-
+    if (!geoData.results?.length) throw new Error("Cidade não encontrada.");
     const { latitude, longitude, name, country } = geoData.results[0];
 
-    // buscar temperatura atual
+    // 🔹 Etapa 2: Buscar dados climáticos
     const weatherResponse = await fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`
     );
-
     if (!weatherResponse.ok) throw new Error("Falha ao buscar dados do clima.");
-
     const weatherData = await weatherResponse.json();
+
+    const { temperature, windspeed, weathercode } = weatherData.current_weather;
+
+    // 🔹 Etapa 3: Retornar com ícone e descrição
+    const { descricao, icone } = getWeatherDescription(weathercode);
 
     return {
       city: `${name}, ${country}`,
-      temperature: weatherData.current_weather.temperature,
-      description: `Vento: ${weatherData.current_weather.windspeed} km/h`
+      temperature,
+      description: `${descricao} — Vento: ${windspeed} km/h`,
+      icone
     };
 
   } catch (error) {
     console.warn("⚠️ API falhou, usando dados locais de teste:", error.message);
 
-    // Usa dados locais de teste como fallback
+    // 🔹 Fallback local
     const localResponse = await fetch("./data/sample-response.json");
     const localData = await localResponse.json();
 
@@ -79,13 +57,41 @@ export async function getWeatherData(city) {
 
     if (!found) throw new Error("Cidade não encontrada (nem nos dados locais).");
 
+    const { descricao, icone } = getWeatherDescription(found.current_weather.weathercode);
+
     return {
       city: found.city,
       temperature: found.current_weather.temperature,
-      description: `Vento: ${found.current_weather.windspeed} km/h`
+      description: `${descricao} — Vento: ${found.current_weather.windspeed} km/h`,
+      icone
     };
   }
 }
 
+/**
+ * Converte o código meteorológico da Open-Meteo em uma descrição textual e ícone.
+ *
+ * @param {number} code - Código numérico retornado pela API.
+ * @returns {Object} Um objeto com `descricao` e `icone`.
+ */
+function getWeatherDescription(code) {
+  const map = {
+    0: { descricao: "Céu limpo", icone: "☀️" },
+    1: { descricao: "Predominantemente claro", icone: "🌤️" },
+    2: { descricao: "Parcialmente nublado", icone: "🌥️" },
+    3: { descricao: "Nublado", icone: "☁️" },
+    45: { descricao: "Nevoeiro", icone: "🌫️" },
+    48: { descricao: "Neblina", icone: "🌫️" },
+    51: { descricao: "Chuvisco leve", icone: "🌦️" },
+    61: { descricao: "Chuva leve", icone: "🌦️" },
+    63: { descricao: "Chuva moderada", icone: "🌧️" },
+    65: { descricao: "Chuva forte", icone: "🌧️" },
+    71: { descricao: "Neve leve", icone: "❄️" },
+    73: { descricao: "Neve moderada", icone: "❄️" },
+    75: { descricao: "Neve intensa", icone: "❄️" },
+    95: { descricao: "Trovoadas", icone: "⛈️" },
+    99: { descricao: "Tempestade severa", icone: "🌩️" },
+  };
 
-
+  return map[code] || { descricao: "Condição desconhecida", icone: "❔" };
+}
