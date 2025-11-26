@@ -153,7 +153,7 @@ Sinta-se à vontade para clonar, adaptar e evoluir a aplicação.
 
 ---
 
-## 🧑‍💻 **Autor**
+## 🧑‍💻 **Autora**
 
 **Geovana Cazali**  
 💼 Desenvolvedora Full Stack em formação  
